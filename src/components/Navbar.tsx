@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
+import logo from "@/assets/logo.png";
 
 const navLinks = [
   { label: "من نحن", href: "#about" },
@@ -32,7 +33,7 @@ const Navbar = () => {
     <nav
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-400 ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-md py-3"
+          ? "bg-background/95 backdrop-blur-md shadow-brand py-3"
           : "bg-transparent py-6"
       }`}
     >
@@ -44,11 +45,16 @@ const Navbar = () => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className={`text-2xl font-bold transition-colors duration-300 ${
-            isScrolled ? "text-primary" : "text-primary-foreground"
-          }`}
+          className="transition-opacity duration-300 hover:opacity-80"
         >
-          ASC<span className="text-accent">…</span>
+          <img 
+            src={logo} 
+            alt="ASG - مجموعة السلام القابضة" 
+            className={`h-10 md:h-12 w-auto transition-all duration-300 ${
+              isScrolled ? "brightness-0" : ""
+            }`}
+            style={isScrolled ? { filter: "brightness(0) saturate(100%) invert(15%) sepia(74%) saturate(4023%) hue-rotate(268deg) brightness(76%) contrast(101%)" } : {}}
+          />
         </a>
 
         {/* Desktop Navigation */}
@@ -81,7 +87,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full right-0 left-0 bg-background shadow-lg transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full right-0 left-0 bg-background shadow-brand transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >

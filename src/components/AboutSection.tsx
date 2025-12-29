@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { Building2, Globe, Award } from "lucide-react";
+import contentImage from "@/assets/content.png";
 
 const stats = [
   { icon: Building2, value: "٤", label: "شركات متخصصة" },
@@ -34,7 +35,7 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           {/* Text Content */}
           <div className={`transition-all duration-700 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-10"}`}>
-            <span className="text-accent font-semibold text-lg mb-4 block">
+            <span className="text-secondary font-semibold text-lg mb-4 block">
               نبذة عنا
             </span>
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8 leading-tight">
@@ -56,12 +57,12 @@ const AboutSection = () => {
               {stats.map((stat, index) => (
                 <div
                   key={index}
-                  className={`text-center p-4 rounded-xl bg-secondary transition-all duration-500 ${
+                  className={`text-center p-4 rounded-xl bg-muted border border-border transition-all duration-500 hover:shadow-brand ${
                     isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
                   }`}
                   style={{ transitionDelay: `${index * 150}ms` }}
                 >
-                  <stat.icon className="w-8 h-8 text-primary mx-auto mb-3" />
+                  <stat.icon className="w-8 h-8 text-secondary mx-auto mb-3" />
                   <div className="text-3xl font-bold text-primary mb-1">
                     {stat.value}
                   </div>
@@ -79,22 +80,18 @@ const AboutSection = () => {
               isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"
             }`}
           >
-            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden">
-              <div className="absolute inset-0 bg-gradient-to-br from-primary to-primary/80" />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="text-center text-primary-foreground p-8">
-                  <div className="w-24 h-24 mx-auto mb-6 border-4 border-accent rounded-full flex items-center justify-center">
-                    <span className="text-4xl font-bold">ASC</span>
-                  </div>
-                  <p className="text-xl font-medium opacity-90">
-                    نحفظ التراث · ننشر المعرفة
-                  </p>
-                </div>
-              </div>
+            <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-brand-lg">
+              <img 
+                src={contentImage} 
+                alt="ASG - مجموعة السلام" 
+                className="w-full h-full object-cover"
+              />
+              {/* Subtle overlay */}
+              <div className="absolute inset-0 bg-gradient-to-t from-primary/20 to-transparent" />
             </div>
             {/* Decorative Element */}
-            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/20 rounded-2xl -z-10" />
-            <div className="absolute -top-6 -left-6 w-24 h-24 bg-primary/10 rounded-full -z-10" />
+            <div className="absolute -bottom-6 -right-6 w-32 h-32 bg-accent/30 rounded-2xl -z-10" />
+            <div className="absolute -top-6 -left-6 w-24 h-24 bg-secondary/20 rounded-full -z-10" />
           </div>
         </div>
       </div>

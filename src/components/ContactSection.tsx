@@ -60,7 +60,7 @@ const ContactSection = () => {
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="text-accent font-semibold text-lg mb-4 block">
+          <span className="text-secondary font-semibold text-lg mb-4 block">
             تواصل معنا
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
@@ -81,9 +81,9 @@ const ContactSection = () => {
               {contactInfo.map((item, index) => (
                 <div
                   key={index}
-                  className="flex items-start gap-4 p-4 rounded-xl bg-secondary hover:bg-secondary/80 transition-colors"
+                  className="flex items-start gap-4 p-4 rounded-xl bg-muted hover:bg-muted/80 transition-colors duration-300 border border-border"
                 >
-                  <div className="w-12 h-12 rounded-full bg-primary flex items-center justify-center flex-shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-gradient-brand flex items-center justify-center flex-shrink-0">
                     <item.icon className="w-5 h-5 text-primary-foreground" />
                   </div>
                   <div>
@@ -111,7 +111,7 @@ const ContactSection = () => {
 
           {/* Contact Form */}
           <div className={`transition-all duration-700 delay-300 ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 -translate-x-10"}`}>
-            <div className="bg-card rounded-2xl p-8 shadow-lg border border-border">
+            <div className="bg-card rounded-2xl p-8 shadow-brand border border-border">
               <h3 className="text-2xl font-bold text-foreground mb-6">
                 أرسل رسالة
               </h3>
@@ -128,7 +128,7 @@ const ContactSection = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, name: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-300"
                     placeholder="أدخل اسمك الكامل"
                   />
                 </div>
@@ -144,7 +144,7 @@ const ContactSection = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, email: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-300"
                     placeholder="example@email.com"
                     dir="ltr"
                   />
@@ -161,7 +161,7 @@ const ContactSection = () => {
                     onChange={(e) =>
                       setFormData({ ...formData, subject: e.target.value })
                     }
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-300"
                     placeholder="موضوع الرسالة"
                   />
                 </div>
@@ -177,7 +177,7 @@ const ContactSection = () => {
                       setFormData({ ...formData, message: e.target.value })
                     }
                     rows={5}
-                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors resize-none"
+                    className="w-full px-4 py-3 rounded-lg border border-input bg-background text-foreground focus:outline-none focus:ring-2 focus:ring-primary/20 focus:border-primary transition-colors duration-300 resize-none"
                     placeholder="اكتب رسالتك هنا..."
                   />
                 </div>
@@ -185,7 +185,7 @@ const ContactSection = () => {
                 {/* Submit Button */}
                 <button
                   type="submit"
-                  className="w-full bg-primary text-primary-foreground py-4 rounded-lg font-semibold flex items-center justify-center gap-3 hover:bg-primary/90 transition-colors"
+                  className="w-full bg-gradient-brand text-primary-foreground py-4 rounded-lg font-semibold flex items-center justify-center gap-3 hover:opacity-90 transition-opacity duration-300 shadow-brand"
                 >
                   إرسال الرسالة
                   <Send className="w-5 h-5" style={{ transform: "scaleX(-1)" }} />

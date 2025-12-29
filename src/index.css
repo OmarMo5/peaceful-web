@@ -1,50 +1,71 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Noto+Kufi+Arabic:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+/* Al Qabas Font - Using Noto Kufi Arabic as a close alternative */
+@font-face {
+  font-family: 'Al Qabas';
+  src: local('Noto Kufi Arabic'), local('NotoKufiArabic');
+  font-weight: 300 800;
+  font-display: swap;
+}
+
 @layer base {
   :root {
     --background: 0 0% 100%;
-    --foreground: 150 45% 15%;
+    --foreground: 270 57% 22%;
 
     --card: 0 0% 100%;
-    --card-foreground: 150 45% 15%;
+    --card-foreground: 270 57% 22%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 150 45% 15%;
+    --popover-foreground: 270 57% 22%;
 
-    --primary: 155 66% 18%;
+    /* Primary Purple: #5B1990 - HSL: 279 62% 35% */
+    --primary: 279 62% 35%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 150 20% 96%;
-    --secondary-foreground: 155 66% 18%;
+    /* Primary Teal: #226C7B - HSL: 191 56% 31% */
+    --secondary: 191 56% 31%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 150 15% 95%;
-    --muted-foreground: 150 20% 40%;
+    /* Primary Light Blue: #8EC3E8 - HSL: 205 62% 73% */
+    --accent: 205 62% 73%;
+    --accent-foreground: 270 57% 22%;
 
-    --accent: 42 50% 59%;
-    --accent-foreground: 150 45% 15%;
+    /* Muted using secondary colors */
+    --muted: 191 30% 95%;
+    --muted-foreground: 0 0% 31%;
 
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
 
-    --border: 150 20% 90%;
-    --input: 150 20% 90%;
-    --ring: 155 66% 18%;
+    /* Border using #8E8E8E */
+    --border: 0 0% 80%;
+    --input: 0 0% 85%;
+    --ring: 279 62% 35%;
 
     --radius: 0.5rem;
 
+    /* Secondary colors as CSS variables */
+    --secondary-teal: 183 45% 64%; /* #79CDD1 */
+    --secondary-blue: 212 44% 41%; /* #396799 */
+    --secondary-gray-dark: 0 0% 31%; /* #4E4E4F */
+    --secondary-gray-light: 0 0% 56%; /* #8E8E8E */
+
     /* Custom design tokens */
-    --hero-gradient: linear-gradient(135deg, hsl(155, 66%, 18%) 0%, hsl(155, 50%, 25%) 100%);
-    --card-shadow: 0 4px 20px -2px hsl(155 66% 18% / 0.1);
-    --card-shadow-hover: 0 20px 40px -10px hsl(155 66% 18% / 0.2);
-    --text-shadow: 0 2px 10px hsl(155 66% 18% / 0.3);
+    --hero-gradient: linear-gradient(135deg, hsl(279, 62%, 35%) 0%, hsl(191, 56%, 31%) 100%);
+    --gradient-primary: linear-gradient(135deg, hsl(279, 62%, 35%) 0%, hsl(191, 56%, 31%) 50%, hsl(205, 62%, 73%) 100%);
+    --gradient-subtle: linear-gradient(180deg, hsl(279, 62%, 35%) 0%, hsl(191, 56%, 31%) 100%);
+    --card-shadow: 0 4px 20px -2px hsl(279 62% 35% / 0.1);
+    --card-shadow-hover: 0 20px 40px -10px hsl(279 62% 35% / 0.2);
+    --text-shadow: 0 2px 10px hsl(279 62% 35% / 0.3);
     
     /* Section backgrounds */
-    --section-light: 150 20% 98%;
-    --section-dark: 155 66% 18%;
+    --section-light: 191 20% 97%;
+    --section-dark: 279 62% 35%;
     
     /* Animation tokens */
     --transition-smooth: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
@@ -52,33 +73,33 @@
   }
 
   .dark {
-    --background: 155 40% 8%;
+    --background: 270 40% 8%;
     --foreground: 0 0% 98%;
 
-    --card: 155 35% 12%;
+    --card: 270 35% 12%;
     --card-foreground: 0 0% 98%;
 
-    --popover: 155 35% 12%;
+    --popover: 270 35% 12%;
     --popover-foreground: 0 0% 98%;
 
-    --primary: 150 50% 60%;
-    --primary-foreground: 155 40% 8%;
+    --primary: 279 62% 50%;
+    --primary-foreground: 0 0% 100%;
 
-    --secondary: 155 30% 15%;
-    --secondary-foreground: 0 0% 98%;
+    --secondary: 191 56% 40%;
+    --secondary-foreground: 0 0% 100%;
 
-    --muted: 155 25% 18%;
-    --muted-foreground: 150 15% 65%;
+    --muted: 270 25% 18%;
+    --muted-foreground: 0 0% 70%;
 
-    --accent: 42 50% 59%;
-    --accent-foreground: 155 40% 8%;
+    --accent: 205 62% 73%;
+    --accent-foreground: 270 40% 8%;
 
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 155 25% 20%;
-    --input: 155 25% 20%;
-    --ring: 150 50% 60%;
+    --border: 270 25% 25%;
+    --input: 270 25% 25%;
+    --ring: 279 62% 50%;
   }
 }
 
@@ -92,7 +113,7 @@
   }
 
   body {
-    @apply bg-background text-foreground font-cairo;
+    @apply bg-background text-foreground font-alqabas;
     direction: rtl;
   }
 }
@@ -100,6 +121,14 @@
 @layer utilities {
   .text-shadow {
     text-shadow: var(--text-shadow);
+  }
+
+  .bg-gradient-brand {
+    background: var(--hero-gradient);
+  }
+
+  .bg-gradient-brand-full {
+    background: var(--gradient-primary);
   }
 
   .animate-fade-up {
@@ -141,6 +170,27 @@
 
   .nav-link:hover::after {
     @apply w-full;
+  }
+
+  /* Secondary color utilities */
+  .text-secondary-teal {
+    color: hsl(var(--secondary-teal));
+  }
+
+  .text-secondary-blue {
+    color: hsl(var(--secondary-blue));
+  }
+
+  .text-secondary-gray {
+    color: hsl(var(--secondary-gray-dark));
+  }
+
+  .bg-secondary-teal {
+    background-color: hsl(var(--secondary-teal));
+  }
+
+  .border-secondary-teal {
+    border-color: hsl(var(--secondary-teal));
   }
 }
 
