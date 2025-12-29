@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        cairo: ["Cairo", "sans-serif"],
+        alqabas: ["'Noto Kufi Arabic'", "'Al Qabas'", "sans-serif"],
       },
       colors: {
         border: "hsl(var(--border))",
@@ -54,6 +54,11 @@ export default {
           light: "hsl(var(--section-light))",
           dark: "hsl(var(--section-dark))",
         },
+        // Secondary brand colors
+        "brand-teal": "hsl(var(--secondary-teal))",
+        "brand-blue": "hsl(var(--secondary-blue))",
+        "brand-gray": "hsl(var(--secondary-gray-dark))",
+        "brand-gray-light": "hsl(var(--secondary-gray-light))",
       },
       borderRadius: {
         lg: "var(--radius)",
@@ -86,6 +91,10 @@ export default {
         "accordion-up": "accordion-up 0.2s ease-out",
         "fade-up": "fade-up 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards",
         "fade-in": "fade-in 0.6s ease-out forwards",
+      },
+      boxShadow: {
+        "brand": "0 4px 20px -2px hsl(279 62% 35% / 0.15)",
+        "brand-lg": "0 20px 40px -10px hsl(279 62% 35% / 0.2)",
       },
     },
   },

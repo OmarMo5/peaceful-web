@@ -41,11 +41,11 @@ const ValuesSection = () => {
   }, []);
 
   return (
-    <section id="values" ref={sectionRef} className="py-24 bg-muted">
+    <section id="values" ref={sectionRef} className="py-24 bg-section-light">
       <div className="container mx-auto px-6">
         {/* Section Header */}
         <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="text-accent font-semibold text-lg mb-4 block">
+          <span className="text-secondary font-semibold text-lg mb-4 block">
             قيمنا
           </span>
           <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
@@ -70,11 +70,11 @@ const ValuesSection = () => {
             >
               {/* Icon Container */}
               <div className="relative inline-block mb-8">
-                <div className="w-20 h-20 rounded-2xl bg-primary flex items-center justify-center shadow-lg">
+                <div className="w-20 h-20 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg">
                   <value.icon className="w-10 h-10 text-primary-foreground" />
                 </div>
                 {/* Decorative Ring */}
-                <div className="absolute inset-0 w-20 h-20 rounded-2xl border-2 border-accent/30 transform rotate-6" />
+                <div className="absolute inset-0 w-20 h-20 rounded-2xl border-2 border-accent/50 transform rotate-6" />
               </div>
 
               {/* Title */}
