@@ -31,29 +31,34 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-400 ${
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ease-in-out ${
         isScrolled
-          ? "bg-background/95 backdrop-blur-md shadow-brand py-3"
-          : "bg-transparent py-6"
+          ? "bg-background/98 backdrop-blur-md shadow-brand py-2"
+          : "bg-transparent py-4"
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo */}
+        {/* Logo Container - Always visible with consistent styling */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="transition-opacity duration-300 hover:opacity-80"
+          className="relative flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
         >
+          {/* Logo Background for scrolled state - ensures visibility */}
+          <div 
+            className={`absolute inset-0 rounded-lg transition-all duration-300 ${
+              isScrolled 
+                ? "bg-gradient-brand opacity-100 -m-2 shadow-sm" 
+                : "opacity-0"
+            }`}
+          />
           <img 
             src={logo} 
             alt="ASG - مجموعة السلام القابضة" 
-            className={`h-10 md:h-12 w-auto transition-all duration-300 ${
-              isScrolled ? "brightness-0" : ""
-            }`}
-            style={isScrolled ? { filter: "brightness(0) saturate(100%) invert(15%) sepia(74%) saturate(4023%) hue-rotate(268deg) brightness(76%) contrast(101%)" } : {}}
+            className="relative h-9 md:h-10 w-auto object-contain transition-all duration-300"
           />
         </a>
 
@@ -77,8 +82,10 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2 transition-colors ${
-            isScrolled ? "text-primary" : "text-primary-foreground"
+          className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
+            isScrolled 
+              ? "text-primary hover:bg-muted" 
+              : "text-primary-foreground hover:bg-primary-foreground/10"
           }`}
         >
           {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -87,7 +94,7 @@ const Navbar = () => {
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full right-0 left-0 bg-background shadow-brand transition-all duration-300 overflow-hidden ${
+        className={`md:hidden absolute top-full right-0 left-0 bg-background/98 backdrop-blur-md shadow-brand transition-all duration-300 overflow-hidden ${
           isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
@@ -96,7 +103,7 @@ const Navbar = () => {
             <button
               key={link.href}
               onClick={() => scrollToSection(link.href)}
-              className="text-foreground hover:text-primary font-medium text-right py-2 transition-colors"
+              className="text-foreground hover:text-primary font-medium text-right py-2 transition-colors duration-300"
             >
               {link.label}
             </button>
