@@ -38,27 +38,19 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo Container - Always visible with consistent styling */}
+        {/* Logo Container - Always visible */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="relative flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
+          className="flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
         >
-          {/* Logo Background for scrolled state - ensures visibility */}
-          <div 
-            className={`absolute inset-0 rounded-lg transition-all duration-300 ${
-              isScrolled 
-                ? "bg-gradient-brand opacity-100 -m-2 shadow-sm" 
-                : "opacity-0"
-            }`}
-          />
           <img 
             src={logo} 
             alt="ASG - مجموعة السلام القابضة" 
-            className="relative h-9 md:h-10 w-auto object-contain transition-all duration-300"
+            className="h-9 md:h-10 w-auto object-contain transition-all duration-300"
           />
         </a>
 
