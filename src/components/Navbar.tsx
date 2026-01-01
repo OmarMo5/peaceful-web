@@ -61,15 +61,17 @@ const Navbar = () => {
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-6 lg:gap-10">
+        <div className={`hidden md:flex items-center gap-2 lg:gap-3 px-4 py-2 rounded-full transition-all duration-300 ${
+          isScrolled ? "bg-muted/80" : "bg-white/10 backdrop-blur-sm"
+        }`}>
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollToSection(link.href)}
-              className={`nav-link text-sm lg:text-base font-medium transition-all duration-300 pb-1 hover-lift ${
+              className={`nav-link text-sm lg:text-base font-medium transition-all duration-300 px-4 py-2 rounded-full hover-lift ${
                 isScrolled
-                  ? "text-foreground hover:text-primary"
-                  : "text-primary-foreground/95 hover:text-primary-foreground"
+                  ? "text-foreground hover:text-primary hover:bg-primary/10"
+                  : "text-white hover:text-white hover:bg-white/20"
               }`}
             >
               {link.label}
@@ -80,10 +82,10 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2.5 rounded-xl transition-all duration-300 ${
+          className={`flex md:hidden items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 ${
             isScrolled 
-              ? "text-primary hover:bg-muted" 
-              : "text-primary-foreground hover:bg-primary-foreground/10"
+              ? "bg-primary/10 text-primary hover:bg-primary/20" 
+              : "bg-white/20 text-white hover:bg-white/30"
           }`}
           aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
         >
