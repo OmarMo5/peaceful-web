@@ -30,7 +30,7 @@ const ValuesSection = () => {
           setIsVisible(true);
         }
       },
-      { threshold: 0.2 }
+      { threshold: 0.15 }
     );
 
     if (sectionRef.current) {
@@ -41,56 +41,51 @@ const ValuesSection = () => {
   }, []);
 
   return (
-    <section id="values" ref={sectionRef} className="py-24 bg-section-light">
-      <div className="container mx-auto px-6">
+    <section id="values" ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-section-light">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-16 transition-all duration-700 ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"}`}>
-          <span className="text-secondary font-semibold text-lg mb-4 block">
+        <div className={`text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <span className="text-secondary font-semibold text-base sm:text-lg mb-3 sm:mb-4 block">
             قيمنا
           </span>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight mb-4 sm:mb-6">
             المبادئ التي تقودنا
             <br />
             <span className="text-primary">نحو التميز</span>
           </h2>
-          <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
+          <p className="text-muted-foreground text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto px-2">
             قيمنا هي البوصلة التي توجه كل خطوة نخطوها، وكل قرار نتخذه في رحلتنا نحو تحقيق رسالتنا
           </p>
         </div>
 
-        {/* Values Grid */}
-        <div className="grid md:grid-cols-3 gap-8">
+        {/* Values Grid - Responsive layout */}
+        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
           {values.map((value, index) => (
             <div
               key={index}
-              className={`text-center transition-all duration-700 ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-12"
+              className={`text-center p-4 sm:p-6 transition-all duration-700 ease-out ${
+                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
-              style={{ transitionDelay: `${index * 150}ms` }}
+              style={{ transitionDelay: `${index * 120}ms` }}
             >
               {/* Icon Container */}
-              <div className="relative inline-block mb-8">
-                <div className="w-20 h-20 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg">
-                  <value.icon className="w-10 h-10 text-primary-foreground" />
+              <div className="relative inline-block mb-6 sm:mb-8 group">
+                <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg transition-transform duration-300 group-hover:scale-105">
+                  <value.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary-foreground" />
                 </div>
                 {/* Decorative Ring */}
-                <div className="absolute inset-0 w-20 h-20 rounded-2xl border-2 border-accent/50 transform rotate-6" />
+                <div className="absolute inset-0 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl border-2 border-accent/50 transform rotate-6 transition-transform duration-300 group-hover:rotate-12" />
               </div>
 
               {/* Title */}
-              <h3 className="text-2xl font-bold text-foreground mb-4">
+              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
                 {value.title}
               </h3>
 
               {/* Description */}
-              <p className="text-muted-foreground leading-relaxed max-w-sm mx-auto">
+              <p className="text-muted-foreground leading-relaxed max-w-xs sm:max-w-sm mx-auto text-sm sm:text-base">
                 {value.description}
               </p>
-
-              {/* Separator Line */}
-              {index < values.length - 1 && (
-                <div className="hidden md:block absolute top-1/2 left-0 w-px h-32 bg-border transform -translate-y-1/2" />
-              )}
             </div>
           ))}
         </div>

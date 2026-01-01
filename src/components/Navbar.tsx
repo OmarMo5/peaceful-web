@@ -31,39 +31,45 @@ const Navbar = () => {
 
   return (
     <nav
-      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-300 ease-in-out ${
+      className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out ${
         isScrolled
-          ? "bg-background/98 backdrop-blur-md shadow-brand py-2"
-          : "bg-transparent py-4"
+          ? "bg-background/98 backdrop-blur-md shadow-brand py-2 md:py-3"
+          : "bg-transparent py-3 md:py-5"
       }`}
     >
-      <div className="container mx-auto px-6 flex items-center justify-between">
-        {/* Logo Container - Always visible */}
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
+        {/* Logo Container - Premium presentation */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center justify-center transition-transform duration-300 hover:scale-[1.02]"
+          className="flex items-center gap-3 transition-all duration-300 hover:opacity-90 group"
         >
-          <img 
-            src={logo} 
-            alt="ASG - مجموعة السلام القابضة" 
-            className="h-9 md:h-10 w-auto object-contain transition-all duration-300"
-          />
+          <div className="relative">
+            <img 
+              src={logo} 
+              alt="ASG - مجموعة السلام القابضة" 
+              className={`w-auto object-contain transition-all duration-500 ease-out ${
+                isScrolled 
+                  ? "h-10 sm:h-11 md:h-12" 
+                  : "h-11 sm:h-12 md:h-14"
+              }`}
+            />
+          </div>
         </a>
 
         {/* Desktop Navigation */}
-        <div className="hidden md:flex items-center gap-8">
+        <div className="hidden md:flex items-center gap-6 lg:gap-10">
           {navLinks.map((link) => (
             <button
               key={link.href}
               onClick={() => scrollToSection(link.href)}
-              className={`nav-link text-base font-medium transition-colors duration-300 pb-1 ${
+              className={`nav-link text-sm lg:text-base font-medium transition-all duration-300 pb-1 hover-lift ${
                 isScrolled
                   ? "text-foreground hover:text-primary"
-                  : "text-primary-foreground/90 hover:text-primary-foreground"
+                  : "text-primary-foreground/95 hover:text-primary-foreground"
               }`}
             >
               {link.label}
@@ -74,28 +80,43 @@ const Navbar = () => {
         {/* Mobile Menu Button */}
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className={`md:hidden p-2 rounded-lg transition-colors duration-300 ${
+          className={`md:hidden p-2.5 rounded-xl transition-all duration-300 ${
             isScrolled 
               ? "text-primary hover:bg-muted" 
               : "text-primary-foreground hover:bg-primary-foreground/10"
           }`}
+          aria-label={isMobileMenuOpen ? "إغلاق القائمة" : "فتح القائمة"}
         >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          <div className="relative w-6 h-6">
+            <Menu 
+              size={24} 
+              className={`absolute inset-0 transition-all duration-300 ${
+                isMobileMenuOpen ? "opacity-0 rotate-90" : "opacity-100 rotate-0"
+              }`} 
+            />
+            <X 
+              size={24} 
+              className={`absolute inset-0 transition-all duration-300 ${
+                isMobileMenuOpen ? "opacity-100 rotate-0" : "opacity-0 -rotate-90"
+              }`} 
+            />
+          </div>
         </button>
       </div>
 
       {/* Mobile Menu */}
       <div
-        className={`md:hidden absolute top-full right-0 left-0 bg-background/98 backdrop-blur-md shadow-brand transition-all duration-300 overflow-hidden ${
-          isMobileMenuOpen ? "max-h-80 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden absolute top-full right-0 left-0 bg-background/98 backdrop-blur-md shadow-brand transition-all duration-400 ease-out overflow-hidden ${
+          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
         }`}
       >
-        <div className="container mx-auto px-6 py-4 flex flex-col gap-4">
-          {navLinks.map((link) => (
+        <div className="container mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
+          {navLinks.map((link, index) => (
             <button
               key={link.href}
               onClick={() => scrollToSection(link.href)}
-              className="text-foreground hover:text-primary font-medium text-right py-2 transition-colors duration-300"
+              className="text-foreground hover:text-primary hover:bg-muted font-medium text-right py-3 px-4 rounded-xl transition-all duration-300"
+              style={{ animationDelay: `${index * 50}ms` }}
             >
               {link.label}
             </button>
