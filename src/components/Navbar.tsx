@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/logo.png";
+import logoColored from "@/assets/logo-colored.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const navLinks = [
   { label: "من نحن", href: "#about" },
@@ -38,23 +39,34 @@ const Navbar = () => {
       }`}
     >
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
-        {/* Logo Container - Premium presentation */}
+        {/* Logo Container - Premium presentation with dual logo */}
         <a
           href="#"
           onClick={(e) => {
             e.preventDefault();
             window.scrollTo({ top: 0, behavior: "smooth" });
           }}
-          className="flex items-center gap-3 transition-all duration-300 hover:opacity-90 group"
+          className="flex items-center transition-all duration-300 hover:opacity-90 group py-1"
         >
-          <div className="relative">
+          <div className="relative h-10 sm:h-11 md:h-12 flex items-center">
+            {/* White Logo - visible when not scrolled */}
             <img 
-              src={logo} 
+              src={logoWhite} 
               alt="ASG - مجموعة السلام القابضة" 
-              className={`w-auto object-contain transition-all duration-500 ease-out ${
-                isScrolled 
-                  ? "h-10 sm:h-11 md:h-12" 
-                  : "h-11 sm:h-12 md:h-14"
+              className={`h-full w-auto object-contain transition-all duration-500 ease-out absolute inset-0 ${
+                isScrolled || isMobileMenuOpen
+                  ? "opacity-0 scale-95" 
+                  : "opacity-100 scale-100"
+              }`}
+            />
+            {/* Colored Logo - visible when scrolled */}
+            <img 
+              src={logoColored} 
+              alt="ASG - مجموعة السلام القابضة" 
+              className={`h-full w-auto object-contain transition-all duration-500 ease-out ${
+                isScrolled || isMobileMenuOpen
+                  ? "opacity-100 scale-100" 
+                  : "opacity-0 scale-95"
               }`}
             />
           </div>

@@ -49,11 +49,11 @@ const CompaniesSection = () => {
     <section id="companies" ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <span className="text-secondary font-semibold text-base sm:text-lg mb-3 sm:mb-4 block">
+        <div className={`text-center mb-12 sm:mb-14 md:mb-20 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+          <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
             شركاتنا
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-relaxed sm:leading-relaxed md:leading-tight mb-2">
             أربع شركات
             <br />
             <span className="text-primary">رؤية واحدة</span>

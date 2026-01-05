@@ -35,14 +35,14 @@ const HeroSection = () => {
         </span>
 
         {/* Main Headline - Responsive typography */}
-        <h1 className="animate-fade-up-delay-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-tight mb-6 sm:mb-8 text-shadow">
+        <h1 className="animate-fade-up-delay-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-snug sm:leading-snug md:leading-tight mb-8 sm:mb-10 text-shadow">
           نصنع الإرث الحضاري
           <br />
           <span className="text-accent">ونبني جسور المعرفة</span>
         </h1>
 
         {/* Supporting Paragraph - Responsive text */}
-        <p className="animate-fade-up-delay-2 text-base sm:text-lg md:text-xl text-primary-foreground/85 max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 leading-relaxed px-2">
+        <p className="animate-fade-up-delay-2 text-base sm:text-lg md:text-xl text-primary-foreground/85 max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-14 leading-loose sm:leading-relaxed px-2">
           مجموعة رائدة في مجال المعارض والمتاحف الدولية،
           <br className="hidden sm:block" />
           نجمع بين أصالة التراث وإبداع التقنية
