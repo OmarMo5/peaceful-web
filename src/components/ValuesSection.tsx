@@ -49,8 +49,7 @@ const ValuesSection = () => {
             قيمنا
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-relaxed sm:leading-relaxed md:leading-tight mb-6 sm:mb-8">
-            المبادئ التي تقودنا
-            <br />
+            <p className="mb-6"> المبادئ التي تقودنا</p>
             <span className="text-primary">نحو التميز</span>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto px-2 leading-relaxed">

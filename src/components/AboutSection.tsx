@@ -39,8 +39,7 @@ const AboutSection = () => {
               نبذة عنا
             </span>
             <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8 sm:mb-10 leading-relaxed sm:leading-relaxed md:leading-tight">
-              قصة بدأت برؤية
-              <br />
+             <p className="mb-6"> قصة بدأت برؤية </p>
               <span className="text-primary">وتحولت إلى إرث</span>
             </h2>
             <div className="space-y-5 sm:space-y-6 text-muted-foreground text-base sm:text-lg leading-relaxed">

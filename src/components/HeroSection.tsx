@@ -36,8 +36,7 @@ const HeroSection = () => {
 
         {/* Main Headline - Responsive typography */}
         <h1 className="animate-fade-up-delay-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-snug sm:leading-snug md:leading-tight mb-8 sm:mb-10 text-shadow">
-          نصنع الإرث الحضاري
-          <br />
+          <p className="mb-6">نصنع الإرث الحضاري</p>
           <span className="text-accent">ونبني جسور المعرفة</span>
         </h1>
 

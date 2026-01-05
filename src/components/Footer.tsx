@@ -1,6 +1,7 @@
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import footerBg from "@/assets/footer-bg.png";
-import logo from "@/assets/logo.png";
+import logoColored from "@/assets/logo-colored.png";
+import logoWhite from "@/assets/logo-white.png";
 
 const quickLinks = [
   { label: "من نحن", href: "#about" },
@@ -50,7 +51,7 @@ const Footer = () => {
               className="inline-block mb-5 sm:mb-6 transition-opacity duration-300 hover:opacity-90"
             >
               <img 
-                src={logo} 
+                src={logoWhite} 
                 alt="ASG - مجموعة السلام القابضة" 
                 className="h-10 sm:h-11 md:h-12 w-auto"
               />
