@@ -35,15 +35,15 @@ const AboutSection = () => {
         <div className="grid lg:grid-cols-2 gap-10 md:gap-12 lg:gap-16 items-center">
           {/* Text Content */}
           <div className={`transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-x-0" : "opacity-0 translate-x-8"}`}>
-            <span className="text-secondary font-semibold text-base sm:text-lg mb-3 sm:mb-4 block">
+            <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
               نبذة عنا
             </span>
-            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-6 sm:mb-8 leading-tight">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground mb-8 sm:mb-10 leading-relaxed sm:leading-relaxed md:leading-tight">
               قصة بدأت برؤية
               <br />
               <span className="text-primary">وتحولت إلى إرث</span>
             </h2>
-            <div className="space-y-4 sm:space-y-5 text-muted-foreground text-base sm:text-lg leading-relaxed">
+            <div className="space-y-5 sm:space-y-6 text-muted-foreground text-base sm:text-lg leading-relaxed">
               <p>
                 مجموعة السلام (ASG) هي الكيان الأم لمجموعة من الشركات المتخصصة التي تعمل في تناغم تام لتحقيق رسالة واحدة: نشر المعرفة وحفظ التراث الإسلامي بأساليب عصرية مبتكرة.
               </p>
