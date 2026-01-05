@@ -287,6 +287,17 @@
   }
 }
 
+/* RTL text utilities for mixed content */
+.direction-rtl {
+  direction: rtl;
+}
+
+.unicode-bidi-embed {
+  unicode-bidi: embed;
+  direction: ltr;
+  display: inline-block;
+}
+
 /* Custom scrollbar for webkit browsers */
 ::-webkit-scrollbar {
   width: 8px;

@@ -75,14 +75,14 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">روابط سريعة</h4>
             <ul className="space-y-2 sm:space-y-3">
               {quickLinks.map((link, index) => (
-                <li key={index}>
+                <li key={index} className="text-right">
                   <button
                     onClick={() => scrollToSection(link.href)}
-                    className="text-primary-foreground/80 hover:text-accent transition-colors duration-300 text-sm sm:text-base hover-lift"
+                    className="text-primary-foreground/80 hover:text-accent transition-colors duration-300 text-sm sm:text-base hover-lift inline-block"
                   >
                     {link.label}
                   </button>
@@ -92,23 +92,27 @@ const Footer = () => {
           </div>
 
           {/* Contact Info */}
-          <div>
+          <div className="text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">تواصل معنا</h4>
             <ul className="space-y-2 sm:space-y-3 text-primary-foreground/80 text-sm sm:text-base">
-              <li dir="ltr" className="text-left">+966 12 345 6789</li>
-              <li dir="ltr" className="text-left">info@asc-group.com</li>
-              <li>المملكة العربية السعودية، الرياض</li>
+              <li className="text-right direction-rtl">
+                <span className="unicode-bidi-embed">+966 12 345 6789</span>
+              </li>
+              <li className="text-right direction-rtl">
+                <span className="unicode-bidi-embed">info@asc-group.com</span>
+              </li>
+              <li className="text-right">المملكة العربية السعودية، الرياض</li>
             </ul>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="border-t border-primary-foreground/20 mt-10 sm:mt-12 pt-6 sm:pt-8">
-          <div className="flex flex-col sm:flex-row justify-between items-center gap-3 sm:gap-4">
-            <p className="text-primary-foreground/60 text-xs sm:text-sm text-center sm:text-right">
+          <div className="flex flex-col-reverse sm:flex-row-reverse justify-between items-center gap-3 sm:gap-4">
+            <p className="text-primary-foreground/60 text-xs sm:text-sm text-center sm:text-right order-1 sm:order-none">
               © {new Date().getFullYear()} مجموعة السلام. جميع الحقوق محفوظة.
             </p>
-            <div className="flex gap-4 sm:gap-6 text-xs sm:text-sm text-primary-foreground/60">
+            <div className="flex flex-row-reverse gap-4 sm:gap-6 text-xs sm:text-sm text-primary-foreground/60">
               <a href="#" className="hover:text-primary-foreground transition-colors duration-300">
                 سياسة الخصوصية
               </a>

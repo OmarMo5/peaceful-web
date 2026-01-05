@@ -32,8 +32,8 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out ${
-        isScrolled
-          ? "bg-background/98 backdrop-blur-md shadow-brand py-2 md:py-3"
+        isScrolled || isMobileMenuOpen
+          ? "bg-background shadow-brand py-2 md:py-3"
           : "bg-transparent py-3 md:py-5"
       }`}
     >
@@ -106,25 +106,48 @@ const Navbar = () => {
         </button>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile Menu - Fixed position for scroll stability */}
       <div
-        className={`md:hidden absolute top-full right-0 left-0 bg-background/98 backdrop-blur-md shadow-brand transition-all duration-400 ease-out overflow-hidden ${
-          isMobileMenuOpen ? "max-h-96 opacity-100" : "max-h-0 opacity-0"
+        className={`md:hidden fixed top-0 right-0 left-0 z-40 transition-all duration-300 ease-out ${
+          isMobileMenuOpen 
+            ? "opacity-100 pointer-events-auto" 
+            : "opacity-0 pointer-events-none"
         }`}
+        style={{ 
+          top: isScrolled ? '56px' : '64px',
+          transition: 'top 0.5s ease-out, opacity 0.3s ease-out'
+        }}
       >
-        <div className="container mx-auto px-4 sm:px-6 py-4 flex flex-col gap-1">
-          {navLinks.map((link, index) => (
-            <button
-              key={link.href}
-              onClick={() => scrollToSection(link.href)}
-              className="text-foreground hover:text-primary hover:bg-muted font-medium text-right py-3 px-4 rounded-xl transition-all duration-300"
-              style={{ animationDelay: `${index * 50}ms` }}
-            >
-              {link.label}
-            </button>
-          ))}
+        {/* Solid background panel */}
+        <div className="bg-background border-b border-border shadow-brand">
+          <div className="container mx-auto px-4 sm:px-6 py-4 flex flex-col gap-2">
+            {navLinks.map((link, index) => (
+              <button
+                key={link.href}
+                onClick={() => scrollToSection(link.href)}
+                className={`text-foreground hover:text-primary hover:bg-primary/10 font-medium text-right py-3.5 px-5 rounded-xl transition-all duration-300 ${
+                  isMobileMenuOpen ? 'animate-fade-up' : ''
+                }`}
+                style={{ 
+                  animationDelay: `${index * 75}ms`,
+                  animationFillMode: 'both'
+                }}
+              >
+                {link.label}
+              </button>
+            ))}
+          </div>
         </div>
       </div>
+
+      {/* Mobile menu backdrop overlay */}
+      <div 
+        className={`md:hidden fixed inset-0 bg-black/20 z-30 transition-opacity duration-300 ${
+          isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
+        }`}
+        style={{ top: isScrolled ? '56px' : '64px' }}
+        onClick={() => setIsMobileMenuOpen(false)}
+      />
     </nav>
   );
 };
