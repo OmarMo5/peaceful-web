@@ -5,7 +5,9 @@ import logoWhite from "@/assets/logo-white.png";
 
 const quickLinks = [
   { label: "من نحن", href: "#about" },
+  { label: "خدماتنا", href: "#services" },
   { label: "شركاتنا", href: "#companies" },
+  { label: "مشاريعنا", href: "#projects" },
   { label: "قيمنا", href: "#values" },
   { label: "تواصل معنا", href: "#contact" },
 ];
@@ -57,7 +59,7 @@ const Footer = () => {
               />
             </a>
             <p className="text-primary-foreground/80 leading-relaxed max-w-md mb-5 sm:mb-6 text-sm sm:text-base">
-              مجموعة السلام - نصنع الإرث الحضاري ونبني جسور المعرفة من خلال تقديم تجارب متحفية استثنائية تجمع بين أصالة التراث وإبداع التقنية.
+              مجموعة السلام القابضة (ASG) — من المعرفة إلى التجربة، ومن التجربة إلى الأثر. منظومة أعمال متكاملة تجمع بين المعرفة والتنفيذ والتشغيل والمنتج.
             </p>
             
             {/* Social Links */}
@@ -97,12 +99,12 @@ const Footer = () => {
             <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">تواصل معنا</h4>
             <ul className="space-y-2 sm:space-y-3 text-primary-foreground/80 text-sm sm:text-base">
               <li className="text-right direction-rtl">
-                <span className="unicode-bidi-embed">+966 12 345 6789</span>
+                <span className="unicode-bidi-embed">asg.com.sa</span>
               </li>
               <li className="text-right direction-rtl">
-                <span className="unicode-bidi-embed">info@asc-group.com</span>
+                <span className="unicode-bidi-embed">info@asg.com.sa</span>
               </li>
-              <li className="text-right">المملكة العربية السعودية، الرياض</li>
+              <li className="text-right">المقر الرئيسي: مكة المكرمة، المملكة العربية السعودية</li>
             </ul>
           </div>
         </div>
@@ -111,7 +113,7 @@ const Footer = () => {
         <div className="border-t border-primary-foreground/20 mt-10 sm:mt-12 pt-6 sm:pt-8">
           <div className="flex flex-col-reverse sm:flex-row-reverse justify-between items-center gap-3 sm:gap-4">
             <p className="text-primary-foreground/60 text-xs sm:text-sm text-center sm:text-right order-1 sm:order-none">
-              © {new Date().getFullYear()} مجموعة السلام. جميع الحقوق محفوظة.
+              © {new Date().getFullYear()} مجموعة السلام القابضة. جميع الحقوق محفوظة.
             </p>
             <div className="flex flex-row-reverse gap-4 sm:gap-6 text-xs sm:text-sm text-primary-foreground/60">
               <a href="#" className="hover:text-primary-foreground transition-colors duration-300">

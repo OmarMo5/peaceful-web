@@ -1,23 +1,29 @@
 import { useEffect, useRef, useState } from "react";
-import { Phone, Mail, MapPin, Send } from "lucide-react";
+import { Globe, Mail, MapPin, AtSign, Send } from "lucide-react";
 
 const contactInfo = [
   {
-    icon: Phone,
-    label: "الهاتف",
-    value: "+966 12 345 6789",
+    icon: Globe,
+    label: "الموقع الإلكتروني",
+    value: "asg.com.sa",
     dir: "ltr",
   },
   {
     icon: Mail,
     label: "البريد الإلكتروني",
-    value: "info@asc-group.com",
+    value: "info@asg.com.sa",
+    dir: "ltr",
+  },
+  {
+    icon: AtSign,
+    label: "تابعنا",
+    value: "alsalam_asg",
     dir: "ltr",
   },
   {
     icon: MapPin,
-    label: "العنوان",
-    value: "المملكة العربية السعودية، الرياض",
+    label: "المقر الرئيسي",
+    value: "مكة المكرمة، المملكة العربية السعودية",
     dir: "rtl",
   },
 ];

@@ -31,22 +31,22 @@ const HeroSection = () => {
       <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20 md:py-0">
         {/* Small Label */}
         <span className="animate-fade-up inline-block text-accent text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-wide">
-          مجموعة السلام
+          مجموعة السلام القابضة (ASG)
         </span>
 
         {/* Main Headline - Responsive typography */}
         <h1 className="animate-fade-up-delay-1 text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-bold text-primary-foreground leading-snug sm:leading-snug md:leading-tight mb-8 sm:mb-10 text-shadow">
-          <p className="mb-6">نصنع الإرث الحضاري</p>
-          <span className="text-accent">ونبني جسور المعرفة</span>
+          <p className="mb-6">من المعرفة إلى التجربة</p>
+          <span className="text-accent">ومن التجربة إلى الأثر</span>
         </h1>
 
         {/* Supporting Paragraph - Responsive text */}
         <p className="animate-fade-up-delay-2 text-base sm:text-lg md:text-xl text-primary-foreground/85 max-w-xl sm:max-w-2xl lg:max-w-3xl mx-auto mb-10 sm:mb-12 md:mb-14 leading-loose sm:leading-relaxed px-2">
-          مجموعة رائدة في مجال المعارض والمتاحف الدولية،
+          مجموعة قابضة سعودية رائدة في بناء منظومة متكاملة
           <br className="hidden sm:block" />
-          نجمع بين أصالة التراث وإبداع التقنية
+          تصنع قيمة معرفية وثقافية وتشغيلية وتجارية مستدامة،
           <br className="hidden sm:block" />
-          لنقدم تجارب استثنائية تخدم الإنسانية
+          وتسهم في تطوير قطاعات وتجارب ذات أثر محلي ودولي
         </p>
 
         {/* CTA Button - Responsive sizing */}

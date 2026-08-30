@@ -5,7 +5,9 @@ import logoWhite from "@/assets/logo-white.png";
 
 const navLinks = [
   { label: "من نحن", href: "#about" },
+  { label: "خدماتنا", href: "#services" },
   { label: "شركاتنا", href: "#companies" },
+  { label: "مشاريعنا", href: "#projects" },
   { label: "قيمنا", href: "#values" },
   { label: "تواصل معنا", href: "#contact" },
 ];

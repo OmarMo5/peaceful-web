@@ -1,21 +1,36 @@
 import { useEffect, useRef, useState } from "react";
-import { Heart, Target, Users } from "lucide-react";
+import { TrendingUp, Link2, Award, Lightbulb, ShieldCheck, Infinity as InfinityIcon } from "lucide-react";
 
 const values = [
   {
-    icon: Heart,
-    title: "الأصالة والتراث",
-    description: "نحافظ على جذورنا الإسلامية العريقة ونقدمها بأساليب عصرية تليق بعظمة تراثنا وتصل إلى الأجيال الجديدة.",
+    icon: TrendingUp,
+    title: "الأثر",
+    description: "نقيس نجاحنا بما نتركه من قيمة مستدامة للمستفيدين والشركاء والمجتمع.",
   },
   {
-    icon: Target,
-    title: "الابتكار والتميز",
-    description: "نسعى دائماً لتقديم حلول إبداعية ومبتكرة تجمع بين التقنية الحديثة والمحتوى الثري لخلق تجارب لا تُنسى.",
+    icon: Link2,
+    title: "التكامل",
+    description: "نعمل كمنظومة واحدة، تتكامل فيها خبرات شركاتنا لتحقيق نتائج أكبر من مجموع أجزائها.",
   },
   {
-    icon: Users,
-    title: "العمل الجماعي",
-    description: "نؤمن بقوة الفريق الواحد، حيث تتكامل جهود شركاتنا الأربع لتحقيق رسالتنا في نشر المعرفة والحضارة.",
+    icon: Award,
+    title: "الجودة",
+    description: "نلتزم بتقديم حلول وخدمات ومنتجات موثوقة ترتقي بتجربة المستفيد وتلبي أعلى المعايير.",
+  },
+  {
+    icon: Lightbulb,
+    title: "الابتكار",
+    description: "نطوّر أفكاراً وحلولاً متجددة تعزز التميز وتفتح آفاقاً جديدة للنمو.",
+  },
+  {
+    icon: ShieldCheck,
+    title: "الموثوقية",
+    description: "نبني علاقاتنا على الالتزام والشفافية والمسؤولية في كل ما نقدمه.",
+  },
+  {
+    icon: InfinityIcon,
+    title: "الاستدامة",
+    description: "نوازن بين النمو والأثر، ونبني أعمالاً قادرة على الاستمرار وخلق قيمة طويلة الأمد.",
   },
 ];
 
