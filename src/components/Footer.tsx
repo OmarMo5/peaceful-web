@@ -1,13 +1,14 @@
+import { useNavigate, useLocation } from "react-router-dom";
 import { Facebook, Twitter, Linkedin, Instagram } from "lucide-react";
 import footerBg from "@/assets/footer-bg.png";
 import logoColored from "@/assets/logo-colored.png";
 import logoWhite from "@/assets/logo-white.png";
 
-const quickLinks = [
+const quickLinks: { label: string; href?: string; to?: string }[] = [
   { label: "من نحن", href: "#about" },
   { label: "خدماتنا", href: "#services" },
-  { label: "شركاتنا", href: "#companies" },
-  { label: "مشاريعنا", href: "#projects" },
+  { label: "شركاتنا", to: "/companies" },
+  { label: "مشاريعنا", to: "/projects" },
   { label: "قيمنا", href: "#values" },
   { label: "تواصل معنا", href: "#contact" },
 ];
@@ -20,11 +21,30 @@ const socialLinks = [
 ];
 
 const Footer = () => {
-  const scrollToSection = (href: string) => {
-    if (href === "#") return;
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
+
+  const handleLinkClick = (link: { href?: string; to?: string }) => {
+    if (link.to) {
+      navigate(link.to);
+    } else if (link.href) {
+      if (isHome) {
+        const element = document.querySelector(link.href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate(`/${link.href}`);
+      }
+    }
+  };
+
+  const goHome = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
     }
   };
 
@@ -48,7 +68,7 @@ const Footer = () => {
               href="#"
               onClick={(e) => {
                 e.preventDefault();
-                window.scrollTo({ top: 0, behavior: "smooth" });
+                goHome();
               }}
               className="inline-block mb-5 sm:mb-6 transition-opacity duration-300 hover:opacity-90"
             >
@@ -81,10 +101,10 @@ const Footer = () => {
           <div className="text-right">
             <h4 className="text-base sm:text-lg font-bold mb-4 sm:mb-6">روابط سريعة</h4>
             <ul className="space-y-2 sm:space-y-3">
-              {quickLinks.map((link, index) => (
-                <li key={index} className="text-right">
+              {quickLinks.map((link) => (
+                <li key={link.label} className="text-right">
                   <button
-                    onClick={() => scrollToSection(link.href)}
+                    onClick={() => handleLinkClick(link)}
                     className="text-primary-foreground/80 hover:text-accent transition-colors duration-300 text-sm sm:text-base hover-lift inline-block"
                   >
                     {link.label}

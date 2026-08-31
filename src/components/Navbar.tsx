@@ -1,13 +1,14 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoColored from "@/assets/logo-colored.png";
 import logoWhite from "@/assets/logo-white.png";
 
-const navLinks = [
+const navLinks: { label: string; href?: string; to?: string }[] = [
   { label: "من نحن", href: "#about" },
   { label: "خدماتنا", href: "#services" },
-  { label: "شركاتنا", href: "#companies" },
-  { label: "مشاريعنا", href: "#projects" },
+  { label: "شركاتنا", to: "/companies" },
+  { label: "مشاريعنا", to: "/projects" },
   { label: "قيمنا", href: "#values" },
   { label: "تواصل معنا", href: "#contact" },
 ];
@@ -15,6 +16,9 @@ const navLinks = [
 const Navbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const navigate = useNavigate();
+  const location = useLocation();
+  const isHome = location.pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -24,12 +28,28 @@ const Navbar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  const scrollToSection = (href: string) => {
-    const element = document.querySelector(href);
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
+  const handleNavClick = (link: { href?: string; to?: string }) => {
+    if (link.to) {
+      navigate(link.to);
+    } else if (link.href) {
+      if (isHome) {
+        const element = document.querySelector(link.href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        navigate(`/${link.href}`);
+      }
     }
     setIsMobileMenuOpen(false);
+  };
+
+  const goHome = () => {
+    if (isHome) {
+      window.scrollTo({ top: 0, behavior: "smooth" });
+    } else {
+      navigate("/");
+    }
   };
 
   return (
@@ -46,7 +66,7 @@ const Navbar = () => {
           href="#"
           onClick={(e) => {
             e.preventDefault();
-            window.scrollTo({ top: 0, behavior: "smooth" });
+            goHome();
           }}
           className="flex items-center transition-all duration-300 hover:opacity-90 group py-1"
         >
@@ -80,8 +100,8 @@ const Navbar = () => {
         }`}>
           {navLinks.map((link) => (
             <button
-              key={link.href}
-              onClick={() => scrollToSection(link.href)}
+              key={link.label}
+              onClick={() => handleNavClick(link)}
               className={`nav-link text-sm lg:text-base font-medium transition-all duration-300 px-4 py-2 rounded-full hover-lift ${
                 isScrolled
                   ? "text-foreground hover:text-primary hover:bg-primary/10"
@@ -137,8 +157,8 @@ const Navbar = () => {
           <div className="container mx-auto px-4 sm:px-6 py-4 flex flex-col gap-2">
             {navLinks.map((link, index) => (
               <button
-                key={link.href}
-                onClick={() => scrollToSection(link.href)}
+                key={link.label}
+                onClick={() => handleNavClick(link)}
                 className={`text-foreground hover:text-primary hover:bg-primary/10 font-medium text-right py-3.5 px-5 rounded-xl transition-all duration-300 ${
                   isMobileMenuOpen ? 'animate-fade-up' : ''
                 }`}

@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { Link } from "react-router-dom";
 import waqfLogo from "@/assets/org/waqf.png";
 import asgLogo from "@/assets/logo-colored.png";
 import oswaLogo from "@/assets/org/oswa.png";
@@ -18,17 +19,29 @@ const Node = ({
   logo,
   name,
   size = "md",
+  to,
 }: {
   logo: string;
   name: string;
   size?: "sm" | "md" | "lg";
+  to?: string;
 }) => {
   const heights = { sm: "h-10 sm:h-11", md: "h-11 sm:h-14", lg: "h-14 sm:h-16" };
-  return (
-    <div className="flex flex-col items-center bg-card rounded-xl sm:rounded-2xl border border-border shadow-brand px-4 sm:px-5 py-3 sm:py-4 card-hover">
-      <img src={logo} alt={name} className={`${heights[size]} w-auto max-w-[150px] sm:max-w-[180px] object-contain`} />
-    </div>
+  const classes =
+    "flex flex-col items-center bg-card rounded-xl sm:rounded-2xl border border-border shadow-brand px-4 sm:px-5 py-3 sm:py-4 card-hover";
+  const img = (
+    <img src={logo} alt={name} className={`${heights[size]} w-auto max-w-[150px] sm:max-w-[180px] object-contain`} />
   );
+
+  if (to) {
+    return (
+      <Link to={to} className={`${classes} hover:border-secondary/40 transition-colors duration-300`}>
+        {img}
+      </Link>
+    );
+  }
+
+  return <div className={classes}>{img}</div>;
 };
 
 const VLine = ({ h = "h-6 sm:h-8" }: { h?: string }) => (
@@ -90,7 +103,7 @@ const OrgChartSection = () => {
               {children.map((child) => (
                 <div key={child.code} className="flex-1 flex flex-col items-center px-2 sm:px-3">
                   <VLine />
-                  <Node logo={child.logo} name={child.name} />
+                  <Node logo={child.logo} name={child.name} to={`/companies/${child.code}`} />
 
                   {child.child && (
                     <>
@@ -102,6 +115,15 @@ const OrgChartSection = () => {
               ))}
             </div>
           </div>
+        </div>
+
+        <div className="text-center mt-10 sm:mt-14">
+          <Link
+            to="/companies"
+            className="inline-flex items-center gap-2 text-sm sm:text-base font-semibold text-primary border border-primary/20 bg-primary/5 hover:bg-primary hover:text-primary-foreground rounded-xl px-6 py-3 transition-all duration-300"
+          >
+            تعرّف على شركاتنا بالتفصيل
+          </Link>
         </div>
       </div>
     </section>

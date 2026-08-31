@@ -1,14 +1,26 @@
-import { useEffect, useRef, useState } from "react";
-import { FileText } from "lucide-react";
-import {
-  Dialog,
-  DialogContent,
-  DialogHeader,
-  DialogTitle,
-  DialogDescription,
-} from "@/components/ui/dialog";
+import oswaLogo from "@/assets/org/oswa.png";
+import asrdLogo from "@/assets/org/asrd.png";
+import ascdLogo from "@/assets/org/ascd.png";
+import ascLogo from "@/assets/org/asc.png";
 
-const companies = [
+export interface CompanyCategory {
+  title: string;
+  text: string;
+}
+
+export interface Company {
+  code: string;
+  nameAr: string;
+  tagline: string;
+  role: string;
+  description: string;
+  tags: string[];
+  fullIntro: string;
+  categories: CompanyCategory[];
+  logo: string;
+}
+
+export const companies: Company[] = [
   {
     code: "ASC",
     nameAr: "شركة السلام",
@@ -33,6 +45,7 @@ const companies = [
         text: "تقوم شركة السلام بإنتاج الأفلام الوثائقية والتعريفية والتعليمية، والموشن جرافيك، والتغطيات الإعلامية، إلى جانب تخطيط وتنفيذ الحملات التسويقية الرقمية، وتسويق المحتوى، والإعلانات الرقمية، وإدارة المنصات والمتاجر الإلكترونية، والمجتمعات الرقمية، والمؤتمرات الصحفية، والتواصل المؤسسي، وبناء الصورة الذهنية وإدارة السمعة، بما يعزز حضور المشاريع ويضاعف أثرها واستدامة تأثيرها.",
       },
     ],
+    logo: ascLogo,
   },
   {
     code: "ASCD",
@@ -62,6 +75,7 @@ const companies = [
         text: "تقوم شركة السلام للمقاولات والديكورات بتصميم وتصنيع الأثاث والتجهيزات المخصصة، والأعمال الخشبية، ووحدات العرض، والمجسمات، والعناصر الخاصة، مع تقديم خدمات تشغيل المرافق، والصيانة الوقائية والتصحيحية، وتشغيل الأنظمة الهندسية، وإدارة عقود التشغيل والصيانة، بما يضمن استدامة الأصول واستمرار كفاءة الأداء.",
       },
     ],
+    logo: ascdLogo,
   },
   {
     code: "ASRD",
@@ -91,6 +105,7 @@ const companies = [
         text: "تختص شركة السلام للبحث العلمي والتطوير بتصميم منظومات الحوكمة، والأدلة الإجرائية والتشغيلية، والنماذج المؤسسية والإدارية، وإعداد الحقائب والأدلة التدريبية والمواد التعليمية وأدوات التقييم، إلى جانب تطوير مؤشرات الأداء وقياس الأثر وتقييم البرامج والمبادرات، بما يعزز كفاءة المؤسسات ويرسخ ثقافة التحسين المستمر.",
       },
     ],
+    logo: asrdLogo,
   },
   {
     code: "OSWA",
@@ -116,148 +131,9 @@ const companies = [
         text: "تبدع شركة أسوة للهدايا بتطوير المنتجات الخاصة بالمشاريع والمتاحف والمعارض، وتشغيل متاجر الهدايا وإدارتها، وتوفير المنتجات المناسبة لمنافذ البيع، بما يعزز تجربة الزائر، ويوسع مصادر الدخل، ويسهم في تحقيق الاستدامة المالية للمشاريع الثقافية والمعرفية.",
       },
     ],
+    logo: oswaLogo,
   },
 ];
 
-const CompaniesSection = () => {
-  const [isVisible, setIsVisible] = useState(false);
-  const [openCode, setOpenCode] = useState<string | null>(null);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true);
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
-  const openCompany = companies.find((c) => c.code === openCode) ?? null;
-
-  return (
-    <section id="companies" ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-muted">
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <div className={`text-center mb-8 sm:mb-10 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
-          <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
-            شركاتنا
-          </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-relaxed sm:leading-relaxed md:leading-tight mb-2">
-            <p className="mb-3">أربع شركات</p>
-            <span className="text-primary">رؤية واحدة</span>
-          </h2>
-          <p className="text-muted-foreground text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto leading-relaxed">
-            كيانات المنظومة تشكل سلسلة تكامل تصنع قيمة، وتترك أثراً، وتشكل منهج استدامة
-          </p>
-        </div>
-
-        {/* Companies Grid - Responsive layout */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 md:gap-6">
-          {companies.map((company, index) => (
-            <div
-              key={company.code}
-              className={`group bg-card rounded-2xl p-5 sm:p-6 shadow-brand card-hover border-t-4 border-t-transparent hover:border-t-secondary transition-all duration-500 ease-out flex flex-col ${
-                isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
-              }`}
-              style={{ transitionDelay: `${index * 80}ms` }}
-            >
-              {/* Company Code Badge */}
-              <div className="w-12 h-12 sm:w-14 sm:h-14 rounded-xl bg-primary/10 flex items-center justify-center mb-4 sm:mb-6 group-hover:bg-secondary transition-all duration-300">
-                <span className="text-sm sm:text-base font-extrabold text-primary group-hover:text-secondary-foreground transition-colors duration-300 tracking-tight">
-                  {company.code}
-                </span>
-              </div>
-
-              {/* Role in the ecosystem */}
-              <span className="inline-block w-fit text-[10px] sm:text-xs font-semibold text-secondary bg-secondary/10 px-2.5 py-1 rounded-full mb-3">
-                {company.role}
-              </span>
-
-              {/* Company Names */}
-              <h3 className="text-lg sm:text-xl font-bold text-foreground mb-1.5 sm:mb-2">
-                {company.nameAr}
-              </h3>
-              <p className="text-xs sm:text-sm text-secondary mb-3 sm:mb-4 font-semibold">
-                {company.tagline}
-              </p>
-
-              {/* Description */}
-              <p className="text-muted-foreground leading-relaxed mb-4 sm:mb-5 text-sm flex-1">
-                {company.description}
-              </p>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-1.5 sm:gap-2 mb-4 sm:mb-5">
-                {company.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="text-[10px] sm:text-xs px-2 py-1 rounded-md bg-muted text-muted-foreground border border-border"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-
-              {/* Full details trigger */}
-              <button
-                onClick={() => setOpenCode(company.code)}
-                className="inline-flex items-center justify-center gap-2 text-sm font-semibold text-primary border border-primary/20 bg-primary/5 hover:bg-primary hover:text-primary-foreground rounded-xl py-2.5 transition-all duration-300"
-              >
-                <FileText className="w-4 h-4" />
-                التفاصيل الكاملة
-              </button>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      {/* Full company detail modal */}
-      <Dialog open={!!openCompany} onOpenChange={(open) => !open && setOpenCode(null)}>
-        <DialogContent className="max-w-2xl max-h-[85vh] overflow-y-auto">
-          {openCompany && (
-            <>
-              <DialogHeader>
-                <span className="inline-flex w-fit items-center gap-2 text-xs font-extrabold text-primary bg-primary/10 px-3 py-1 rounded-full mb-2">
-                  {openCompany.code}
-                </span>
-                <DialogTitle className="text-xl sm:text-2xl">{openCompany.nameAr}</DialogTitle>
-                <DialogDescription className="text-secondary font-semibold text-sm sm:text-base">
-                  {openCompany.tagline}
-                </DialogDescription>
-              </DialogHeader>
-
-              <p className="text-muted-foreground leading-relaxed text-sm sm:text-base">
-                {openCompany.fullIntro}
-              </p>
-
-              <div className="space-y-4 sm:space-y-5 mt-2">
-                {openCompany.categories.map((cat, i) => (
-                  <div key={cat.title} className="rounded-xl bg-muted border border-border p-4 sm:p-5">
-                    <div className="flex items-center gap-2.5 mb-2">
-                      <span className="w-6 h-6 rounded-full bg-secondary text-secondary-foreground text-xs font-bold flex items-center justify-center shrink-0">
-                        {i + 1}
-                      </span>
-                      <h4 className="font-bold text-foreground text-sm sm:text-base">{cat.title}</h4>
-                    </div>
-                    <p className="text-muted-foreground leading-relaxed text-sm">{cat.text}</p>
-                  </div>
-                ))}
-              </div>
-            </>
-          )}
-        </DialogContent>
-      </Dialog>
-    </section>
-  );
-};
-
-export default CompaniesSection;
+export const getCompanyByCode = (code: string | undefined) =>
+  companies.find((c) => c.code.toLowerCase() === (code ?? "").toLowerCase());
