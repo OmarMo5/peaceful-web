@@ -45,7 +45,21 @@ const ProcessSection = () => {
         </div>
 
         {/* Steps flow */}
-        <div className="flex flex-col md:flex-row items-stretch md:items-start gap-4 md:gap-0">
+        <div className="relative flex flex-col md:flex-row items-stretch md:items-start gap-4 md:gap-0">
+          {/* Single connector line spanning from the first icon's center to the last icon's center,
+              running behind the icons (icons have z-10 so the line sits in the background) */}
+          <div
+            className={`hidden md:block absolute top-8 h-0.5 transition-all duration-700 ease-out ${
+              isVisible ? "opacity-100" : "opacity-0"
+            }`}
+            style={{
+              left: `${100 / (steps.length * 2)}%`,
+              right: `${100 / (steps.length * 2)}%`,
+              background: "hsl(var(--secondary)/0.4)",
+              transitionDelay: "150ms",
+            }}
+          />
+
           {steps.map((step, index) => (
             <div key={step.en} className="relative flex md:flex-col items-center md:items-center flex-1 gap-4 md:gap-0">
               <div
@@ -62,19 +76,6 @@ const ProcessSection = () => {
                   <p className="text-xs text-muted-foreground">{step.en}</p>
                 </div>
               </div>
-
-              {/* Connector line - spans from this icon's center to the next icon's center */}
-              {index < steps.length - 1 && (
-                <div
-                  className={`hidden md:block absolute top-7 sm:top-8 left-1/2 w-full h-0.5 transition-all duration-700 ease-out ${
-                    isVisible ? "opacity-100" : "opacity-0"
-                  }`}
-                  style={{
-                    background: "linear-gradient(90deg, hsl(var(--secondary)/0.3) 0%, hsl(var(--secondary)) 100%)",
-                    transitionDelay: `${index * 90 + 100}ms`,
-                  }}
-                />
-              )}
             </div>
           ))}
         </div>
