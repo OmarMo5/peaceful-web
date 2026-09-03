@@ -93,8 +93,8 @@ export default {
         "fade-in": "fade-in 0.6s ease-out forwards",
       },
       boxShadow: {
-        "brand": "0 4px 20px -2px hsl(279 62% 35% / 0.15)",
-        "brand-lg": "0 20px 40px -10px hsl(279 62% 35% / 0.2)",
+        "brand": "0 4px 20px -2px hsl(var(--primary) / 0.15)",
+        "brand-lg": "0 20px 40px -10px hsl(var(--primary) / 0.2)",
       },
     },
   },
