@@ -13,12 +13,20 @@ const navLinks: { label: string; href?: string; to?: string }[] = [
   { label: "تواصل معنا", href: "#contact" },
 ];
 
-const Navbar = () => {
+interface NavbarProps {
+  /** Set when the page's own top-of-page background is light (not the usual dark brand gradient),
+   * so the navbar renders its solid/dark-text style from the start instead of assuming a dark hero. */
+  forceLight?: boolean;
+}
+
+const Navbar = ({ forceLight = false }: NavbarProps) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === "/";
+  // Whichever styling this navbar should currently use: real scroll position, or forced due to a light hero.
+  const solid = isScrolled || forceLight;
 
   useEffect(() => {
     const handleScroll = () => {
@@ -55,7 +63,7 @@ const Navbar = () => {
   return (
     <nav
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out ${
-        isScrolled || isMobileMenuOpen
+        solid || isMobileMenuOpen
           ? "bg-background shadow-brand py-2 md:py-3"
           : "bg-transparent py-3 md:py-5"
       }`}
@@ -76,7 +84,7 @@ const Navbar = () => {
               src={logoWhite} 
               alt="ASG - مجموعة السلام القابضة" 
               className={`h-full w-auto object-contain transition-all duration-500 ease-out absolute inset-0 ${
-                isScrolled || isMobileMenuOpen
+                solid || isMobileMenuOpen
                   ? "opacity-0 scale-95" 
                   : "opacity-100 scale-100"
               }`}
@@ -86,7 +94,7 @@ const Navbar = () => {
               src={logoColored} 
               alt="ASG - مجموعة السلام القابضة" 
               className={`h-full w-auto object-contain transition-all duration-500 ease-out ${
-                isScrolled || isMobileMenuOpen
+                solid || isMobileMenuOpen
                   ? "opacity-100 scale-100" 
                   : "opacity-0 scale-95"
               }`}
@@ -96,14 +104,14 @@ const Navbar = () => {
 
         {/* Desktop Navigation */}
         <div className={`hidden md:flex items-center gap-2 lg:gap-3 px-4 py-2 rounded-full transition-all duration-300 ${
-          isScrolled ? "bg-muted/80" : "bg-white/10 backdrop-blur-sm"
+          solid ? "bg-muted/80" : "bg-white/10 backdrop-blur-sm"
         }`}>
           {navLinks.map((link) => (
             <button
               key={link.label}
               onClick={() => handleNavClick(link)}
               className={`nav-link text-sm lg:text-base font-medium transition-all duration-300 px-4 py-2 rounded-full hover-lift ${
-                isScrolled
+                solid
                   ? "text-foreground hover:text-primary hover:bg-primary/10"
                   : "text-white hover:text-white hover:bg-white/20"
               }`}
@@ -117,7 +125,7 @@ const Navbar = () => {
         <button
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           className={`flex md:hidden items-center justify-center w-10 h-10 rounded-xl transition-all duration-300 ${
-            isScrolled 
+            solid 
               ? "bg-primary/10 text-primary hover:bg-primary/20" 
               : "bg-white/20 text-white hover:bg-white/30"
           }`}
@@ -148,7 +156,7 @@ const Navbar = () => {
             : "opacity-0 pointer-events-none"
         }`}
         style={{ 
-          top: isScrolled ? '56px' : '64px',
+          top: solid ? '56px' : '64px',
           transition: 'top 0.5s ease-out, opacity 0.3s ease-out'
         }}
       >
@@ -179,7 +187,7 @@ const Navbar = () => {
         className={`md:hidden fixed inset-0 bg-black/20 z-30 transition-opacity duration-300 ${
           isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ top: isScrolled ? '56px' : '64px' }}
+        style={{ top: solid ? '56px' : '64px' }}
         onClick={() => setIsMobileMenuOpen(false)}
       />
     </nav>
