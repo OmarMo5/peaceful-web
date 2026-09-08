@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useLayoutEffect } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoColored from "@/assets/logo-colored.png";
@@ -28,12 +28,27 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
   // Whichever styling this navbar should currently use: real scroll position, or forced due to a light hero.
   const solid = isScrolled || forceLight;
 
+  // Measure the navbar's own rendered height so the mobile menu can be positioned exactly
+  // below it, instead of guessing fixed pixel values that drift whenever the logo/padding change.
+  const navRef = useRef<HTMLElement>(null);
+  const [navHeight, setNavHeight] = useState(64);
+
   useEffect(() => {
     const handleScroll = () => {
       setIsScrolled(window.scrollY > 50);
     };
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  useLayoutEffect(() => {
+    const el = navRef.current;
+    if (!el) return;
+    const update = () => setNavHeight(el.getBoundingClientRect().height);
+    update();
+    const observer = new ResizeObserver(update);
+    observer.observe(el);
+    return () => observer.disconnect();
   }, []);
 
   const handleNavClick = (link: { href?: string; to?: string }) => {
@@ -62,6 +77,7 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
 
   return (
     <nav
+      ref={navRef}
       className={`fixed top-0 right-0 left-0 z-50 transition-all duration-500 ease-out ${
         solid || isMobileMenuOpen
           ? "bg-background shadow-brand py-2 md:py-3"
@@ -78,7 +94,7 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
           }}
           className="flex items-center transition-all duration-300 hover:opacity-90 group py-1"
         >
-          <div className="relative h-10 sm:h-11 md:h-12 flex items-center">
+          <div className="relative h-12 sm:h-14 md:h-16 flex items-center">
             {/* White Logo - visible when not scrolled */}
             <img 
               src={logoWhite} 
@@ -155,8 +171,8 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
             ? "opacity-100 pointer-events-auto" 
             : "opacity-0 pointer-events-none"
         }`}
-        style={{ 
-          top: solid ? '56px' : '64px',
+        style={{
+          top: `${navHeight}px`,
           transition: 'top 0.5s ease-out, opacity 0.3s ease-out'
         }}
       >
@@ -187,7 +203,7 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
         className={`md:hidden fixed inset-0 bg-black/20 z-30 transition-opacity duration-300 ${
           isMobileMenuOpen ? 'opacity-100' : 'opacity-0 pointer-events-none'
         }`}
-        style={{ top: solid ? '56px' : '64px' }}
+        style={{ top: `${navHeight}px` }}
         onClick={() => setIsMobileMenuOpen(false)}
       />
     </nav>
