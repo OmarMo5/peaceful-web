@@ -45,22 +45,13 @@ const CompanyDetailPage = () => {
             </Link>
 
             <div className="flex flex-col items-center text-center">
-              <div
-                className="inline-flex items-center gap-3 sm:gap-4 bg-white rounded-2xl sm:rounded-3xl shadow-brand-lg px-6 py-5 sm:px-9 sm:py-7 mb-6 sm:mb-8"
-                role="img"
-                aria-label={`${company.nameAr} (${company.code})`}
-              >
-                <div className="flex items-end gap-1 sm:gap-1.5 h-9 sm:h-11 md:h-12 shrink-0">
-                  <span className="w-1.5 sm:w-2 h-full rounded-sm bg-gradient-brand" />
-                  <span className="w-1.5 sm:w-2 h-2/3 rounded-sm bg-gradient-brand" />
-                  <span className="w-1.5 sm:w-2 h-full rounded-sm bg-gradient-brand" />
-                </div>
-                <span
-                  className="text-3xl sm:text-4xl md:text-5xl font-extrabold bg-gradient-brand text-transparent tracking-tight leading-none"
-                  style={{ WebkitBackgroundClip: "text", backgroundClip: "text" }}
-                >
-                  {company.code}
-                </span>
+              <div className="inline-flex items-center justify-center bg-white rounded-2xl sm:rounded-3xl shadow-brand-lg px-7 py-6 sm:px-10 sm:py-8 mb-6 sm:mb-8">
+                {/* Official logo image - never scaled up past its native size, so it always stays sharp */}
+                <img
+                  src={company.logo}
+                  alt={`${company.nameAr} (${company.code})`}
+                  className="h-14 sm:h-16 w-auto object-contain"
+                />
               </div>
 
               <span className="inline-block text-xs sm:text-sm font-semibold text-accent bg-primary-foreground/10 px-3 py-1.5 rounded-full mb-4 sm:mb-5">
