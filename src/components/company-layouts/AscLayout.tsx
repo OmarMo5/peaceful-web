@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { ArrowRight, MapPin } from "lucide-react";
+import { ArrowRight, MapPin, Hammer } from "lucide-react";
 import type { CompanyLayoutProps } from "./types";
 
 const AscLayout = ({ company, companyProjects, otherCompanies }: CompanyLayoutProps) => {
@@ -90,9 +90,17 @@ const AscLayout = ({ company, companyProjects, otherCompanies }: CompanyLayoutPr
       {companyProjects.length > 0 && (
         <section className="py-14 sm:py-16 md:py-20 bg-muted">
           <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-xl sm:text-2xl font-bold text-foreground text-center mb-8 sm:mb-10">
-              مشاريع {company.nameAr}
-            </h2>
+            <div className="flex flex-col items-center mb-8 sm:mb-10">
+              <div className="w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg mb-3 sm:mb-4">
+                <Hammer className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground" />
+              </div>
+              <p className="text-2xl sm:text-3xl font-extrabold text-primary mb-1 sm:mb-2">
+                {companyProjects.length}
+              </p>
+              <h2 className="text-xl sm:text-2xl font-bold text-foreground">
+                مشاريع {company.nameAr}
+              </h2>
+            </div>
             <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 max-w-5xl mx-auto">
               {companyProjects.map((project) => (
                 <Link

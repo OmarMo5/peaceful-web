@@ -5,20 +5,15 @@ import Footer from "@/components/Footer";
 import { companies, getCompanyByCode } from "@/data/companies";
 import { projects } from "@/data/projects";
 import AscLayout from "@/components/company-layouts/AscLayout";
-import AscdLayout from "@/components/company-layouts/AscdLayout";
-import AsrdLayout from "@/components/company-layouts/AsrdLayout";
 import OswaLayout from "@/components/company-layouts/OswaLayout";
 
+// ASC, ASCD and ASRD all share the same layout design; OSWA keeps its own distinct layout.
 const layoutByCode = {
   ASC: AscLayout,
-  ASCD: AscdLayout,
-  ASRD: AsrdLayout,
+  ASCD: AscLayout,
+  ASRD: AscLayout,
   OSWA: OswaLayout,
 } as const;
-
-// Layouts whose hero section uses a light background instead of the usual dark brand gradient,
-// so the navbar needs to render in its solid/dark-text style from the start (not just after scrolling).
-const lightHeroCodes = new Set(["ASRD"]);
 
 const CompanyDetailPage = () => {
   const { code } = useParams<{ code: string }>();
@@ -42,7 +37,7 @@ const CompanyDetailPage = () => {
 
   return (
     <div className="min-h-screen">
-      <Navbar forceLight={lightHeroCodes.has(company.code)} />
+      <Navbar />
       <main>
         <Layout company={company} companyProjects={companyProjects} otherCompanies={otherCompanies} />
       </main>
