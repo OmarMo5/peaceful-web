@@ -28,7 +28,7 @@ const HeroSection = () => {
         </svg>
       </div>
 
-      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 py-20 md:py-0">
+      <div className="container mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10 pt-28 pb-20 sm:pt-32 md:pt-36 md:pb-0">
         {/* Small Label */}
         <span className="animate-fade-up inline-block text-accent text-base sm:text-lg font-semibold mb-4 sm:mb-6 tracking-wide">
           مجموعة السلام القابضة (ASG)

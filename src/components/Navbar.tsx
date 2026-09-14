@@ -94,7 +94,7 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
           }}
           className="flex items-center transition-all duration-300 hover:opacity-90 group py-1"
         >
-          <div className="relative h-12 sm:h-14 md:h-16 flex items-center">
+          <div className="relative h-14 sm:h-16 md:h-20 flex items-center">
             {/* White Logo - visible when not scrolled */}
             <img 
               src={logoWhite} 
