@@ -1,12 +1,18 @@
+import { useNavigate } from "react-router-dom";
 import { ChevronDown } from "lucide-react";
 
+// Decorative diamonds echoing the brand's geometric identity (position, size, animation, delay)
+const diamonds = [
+  { className: "top-[12%] right-[8%] w-16 sm:w-24", anim: "animate-float-slow", delay: "0s" },
+  { className: "top-[58%] right-[18%] w-10 sm:w-14", anim: "animate-float-slower", delay: "1.2s" },
+  { className: "top-[22%] left-[10%] w-12 sm:w-20", anim: "animate-float-slower", delay: "0.6s" },
+  { className: "top-[68%] left-[6%] w-20 sm:w-28", anim: "animate-float-slow", delay: "1.8s" },
+  { className: "top-[40%] left-[30%] w-8 sm:w-10 hidden md:block", anim: "animate-float-slow", delay: "2.4s" },
+];
+
 const HeroSection = () => {
-  const scrollToCompanies = () => {
-    const element = document.querySelector("#companies");
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" });
-    }
-  };
+  const navigate = useNavigate();
+  const goToCompanies = () => navigate("/companies");
 
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-brand overflow-hidden">
@@ -14,6 +20,18 @@ const HeroSection = () => {
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-accent rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3" />
         <div className="absolute bottom-0 left-0 w-48 sm:w-72 md:w-96 h-48 sm:h-72 md:h-96 bg-primary-foreground rounded-full blur-3xl transform -translate-x-1/3 translate-y-1/3" />
+      </div>
+
+      {/* Floating brand diamonds (decorative, pointer-events disabled) */}
+      <div className="absolute inset-0 pointer-events-none" aria-hidden="true">
+        {diamonds.map((d, i) => (
+          <div key={i} className={`absolute aspect-square ${d.className}`}>
+            <div
+              className={`w-full h-full rotate-45 rounded-sm border border-primary-foreground/25 bg-gradient-to-br from-primary-foreground/15 to-transparent ${d.anim}`}
+              style={{ animationDelay: d.delay }}
+            />
+          </div>
+        ))}
       </div>
 
       {/* Geometric Pattern */}
@@ -52,7 +70,7 @@ const HeroSection = () => {
         {/* CTA Button - Responsive sizing */}
         <div className="animate-fade-up-delay-3">
           <button
-            onClick={scrollToCompanies}
+            onClick={goToCompanies}
             className="group inline-flex items-center gap-2 sm:gap-3 bg-primary-foreground text-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl font-semibold text-base sm:text-lg transition-all duration-300 hover:bg-accent hover:text-accent-foreground hover:shadow-brand-lg hover:-translate-y-1 btn-glow"
           >
             اكتشف شركاتنا

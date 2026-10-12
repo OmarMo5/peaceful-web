@@ -315,3 +315,36 @@
 ::-webkit-scrollbar-thumb:hover {
   background: hsl(var(--secondary) / 0.7);
 }
+/* Floating decorative shapes (hero) */
+@keyframes floatSlow {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50% { transform: rotate(52deg) translate(0, -18px); }
+}
+
+@keyframes floatSlower {
+  0%, 100% { transform: rotate(45deg) translate(0, 0); }
+  50% { transform: rotate(36deg) translate(0, 14px); }
+}
+
+.animate-float-slow {
+  animation: floatSlow 9s ease-in-out infinite;
+}
+
+.animate-float-slower {
+  animation: floatSlower 12s ease-in-out infinite;
+}
+
+/* Opacity-only page transition (no transform, so fixed-position navbar keeps working) */
+.animate-page-in {
+  animation: fadeIn 0.45s ease-out;
+}
+
+/* Respect users who ask their device to reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

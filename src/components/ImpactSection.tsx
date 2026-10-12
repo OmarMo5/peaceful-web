@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import CountUp from "@/components/CountUp";
 
 const stats = [
   { value: "10M+", label: "زائر حول العالم" },
@@ -54,7 +55,7 @@ const ImpactSection = () => {
               style={{ transitionDelay: `${index * 70}ms` }}
             >
               <div className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-primary-foreground mb-1.5 sm:mb-2 text-shadow">
-                {stat.value}
+                <CountUp value={stat.value} />
               </div>
               <div className="text-primary-foreground/75 text-xs sm:text-sm md:text-base">
                 {stat.label}

@@ -3,6 +3,7 @@ import { useNavigate, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 import logoColored from "@/assets/logo-colored.png";
 import logoWhite from "@/assets/logo-white.png";
+import ScrollProgress from "@/components/ScrollProgress";
 
 const navLinks: { label: string; href?: string; to?: string }[] = [
   { label: "من نحن", href: "#about" },
@@ -206,6 +207,7 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
         style={{ top: `${navHeight}px` }}
         onClick={() => setIsMobileMenuOpen(false)}
       />
+      <ScrollProgress />
     </nav>
   );
 };
