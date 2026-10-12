@@ -1,5 +1,5 @@
 import { useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
 import AboutSection from "@/components/AboutSection";
@@ -17,6 +17,7 @@ import Footer from "@/components/Footer";
 
 const Index = () => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     // Update document title and meta for SEO
@@ -32,15 +33,18 @@ const Index = () => {
     }
   }, []);
 
-  // Support arriving from another page with a section hash (e.g. navigated from /companies to /#about)
+  // Support arriving from another page with a target section (e.g. /companies -> "قيمنا").
+  // The target travels in router state so the URL stays clean (no "#values" suffix).
   useEffect(() => {
-    if (location.hash) {
-      const element = document.querySelector(location.hash);
-      if (element) {
-        element.scrollIntoView({ behavior: "smooth" });
-      }
+    const target = (location.state as { scrollTo?: string } | null)?.scrollTo;
+    if (!target) return;
+    const element = document.querySelector(target);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth" });
     }
-  }, [location.hash]);
+    // Clear the state so a refresh or back navigation doesn't re-scroll.
+    navigate(location.pathname, { replace: true, state: null });
+  }, [location.state, location.pathname, navigate]);
 
   return (
     <div className="min-h-screen">

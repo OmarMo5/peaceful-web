@@ -62,7 +62,7 @@ const Navbar = ({ forceLight = false }: NavbarProps) => {
           element.scrollIntoView({ behavior: "smooth" });
         }
       } else {
-        navigate(`/${link.href}`);
+        navigate("/", { state: { scrollTo: link.href } });
       }
     }
     setIsMobileMenuOpen(false);
