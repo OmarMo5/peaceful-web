@@ -42,6 +42,23 @@ const partners = [
   { name: "إحسان", logo: ehsan },
 ];
 
+type Partner = (typeof partners)[number];
+
+const rows: Partner[][] = [partners.slice(0, 10), partners.slice(10)];
+
+const MarqueeCard = ({ partner }: { partner: Partner }) => (
+  <div className="shrink-0 w-36 pe-3">
+    <div className="flex flex-col items-center justify-center gap-2 bg-card rounded-2xl p-3 border border-border shadow-brand h-full">
+      <div className="h-12 w-full flex items-center justify-center">
+        <img src={partner.logo} alt={partner.name} className="max-h-12 max-w-full object-contain" loading="lazy" />
+      </div>
+      <p className="text-[11px] text-center text-muted-foreground leading-snug line-clamp-2 min-h-[2.2em]">
+        {partner.name}
+      </p>
+    </div>
+  </div>
+);
+
 const PartnersSection = () => {
   const [isVisible, setIsVisible] = useState(false);
   const sectionRef = useRef<HTMLDivElement>(null);
@@ -72,7 +89,26 @@ const PartnersSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
+        {/* Mobile: auto-scrolling logo strips */}
+        <div className="md:hidden -mx-4 space-y-3" dir="rtl">
+          {rows.map((row, i) => (
+            <div key={i} className="marquee-viewport">
+              <div className={`marquee-track ${i % 2 ? "reverse" : ""}`} style={{ animationDuration: `${row.length * 4.5}s` }}>
+                {row.map((partner) => (
+                  <MarqueeCard key={partner.name} partner={partner} />
+                ))}
+                <div className="marquee-dup flex" aria-hidden="true">
+                  {row.map((partner) => (
+                    <MarqueeCard key={partner.name} partner={partner} />
+                  ))}
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Tablet / desktop: static grid */}
+        <div className="hidden md:grid md:grid-cols-4 lg:grid-cols-5 gap-3 sm:gap-4 md:gap-5">
           {partners.map((partner, index) => (
             <div
               key={partner.name}
