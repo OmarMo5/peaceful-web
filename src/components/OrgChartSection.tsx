@@ -26,11 +26,11 @@ const Node = ({
   size?: "sm" | "md" | "lg";
   to?: string;
 }) => {
-  const heights = { sm: "h-10 sm:h-11", md: "h-11 sm:h-14", lg: "h-14 sm:h-16" };
+  const heights = { sm: "h-5 sm:h-11", md: "h-7 sm:h-14", lg: "h-9 sm:h-16" };
   const classes =
-    "flex flex-col items-center bg-card rounded-xl sm:rounded-2xl border border-border shadow-brand px-4 sm:px-5 py-3 sm:py-4 card-hover";
+    "flex flex-col items-center bg-card rounded-lg sm:rounded-2xl border border-border shadow-brand px-1.5 sm:px-5 py-2 sm:py-4 card-hover";
   const img = (
-    <img src={logo} alt={name} className={`${heights[size]} w-auto max-w-[150px] sm:max-w-[180px] object-contain`} />
+    <img src={logo} alt={name} className={`${heights[size]} w-auto max-w-[64px] sm:max-w-[180px] object-contain`} />
   );
 
   if (to) {
@@ -64,9 +64,9 @@ const OrgChartSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-background">
+    <section ref={sectionRef} className="py-12 sm:py-20 md:py-24 lg:py-28 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-12 sm:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className={`text-center mb-8 sm:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
             المنظومة
           </span>
@@ -79,11 +79,11 @@ const OrgChartSection = () => {
         </div>
 
         <div
-          className={`overflow-x-auto pb-2 transition-all duration-700 ease-out ${
+          className={`pb-2 transition-all duration-700 ease-out ${
             isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-8"
           }`}
         >
-          <div className="flex flex-col items-center min-w-[720px] sm:min-w-0 w-full max-w-3xl mx-auto">
+          <div className="flex flex-col items-center w-full max-w-3xl mx-auto">
             {/* Root: Waqf */}
             <Node logo={waqfLogo} name="وقف الكتاب والحكمة" size="sm" />
             <VLine />
@@ -92,7 +92,7 @@ const OrgChartSection = () => {
             <Node logo={asgLogo} name="مجموعة السلام القابضة" size="lg" />
 
             {/* Connector down to horizontal bar */}
-            <VLine h="h-6 sm:h-8" />
+            <VLine />
 
             {/* Horizontal bar spanning the 4 children, with a drop line to each */}
             <div className="relative w-full flex items-start">
@@ -101,13 +101,13 @@ const OrgChartSection = () => {
                 style={{ left: `${100 / (children.length * 2)}%`, right: `${100 / (children.length * 2)}%` }}
               />
               {children.map((child) => (
-                <div key={child.code} className="flex-1 flex flex-col items-center px-2 sm:px-3">
+                <div key={child.code} className="flex-1 flex flex-col items-center px-0.5 sm:px-3">
                   <VLine />
                   <Node logo={child.logo} name={child.name} to={`/companies/${child.code}`} />
 
                   {child.child && (
                     <>
-                      <VLine h="h-6 sm:h-8" />
+                      <VLine />
                       <Node logo={child.child.logo} name={child.child.name} size="sm" />
                     </>
                   )}

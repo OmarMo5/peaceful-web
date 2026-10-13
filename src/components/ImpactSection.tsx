@@ -28,7 +28,7 @@ const ImpactSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="relative py-16 sm:py-20 md:py-24 bg-gradient-brand overflow-hidden">
+    <section ref={sectionRef} className="relative py-12 sm:py-20 md:py-24 bg-gradient-brand overflow-hidden">
       {/* Decorative pattern */}
       <div className="absolute inset-0 opacity-10">
         <div className="absolute top-0 right-0 w-64 sm:w-96 h-64 sm:h-96 bg-accent rounded-full blur-3xl transform translate-x-1/3 -translate-y-1/3" />

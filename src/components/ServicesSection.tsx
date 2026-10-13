@@ -109,9 +109,9 @@ const ServicesSection = () => {
   }, []);
 
   return (
-    <section id="services" ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-muted">
+    <section id="services" ref={sectionRef} className="py-12 sm:py-20 md:py-24 lg:py-28 bg-muted">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-12 sm:mb-14 md:mb-20 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className={`text-center mb-8 sm:mb-14 md:mb-20 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
             حلولنا وخدماتنا
           </span>

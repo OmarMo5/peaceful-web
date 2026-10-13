@@ -1,13 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Globe, Mail, MapPin, AtSign, Send } from "lucide-react";
+import { Mail, AtSign, Send } from "lucide-react";
 
 const contactInfo = [
-  {
-    icon: Globe,
-    label: "الموقع الإلكتروني",
-    value: "asg.com.sa",
-    dir: "ltr",
-  },
   {
     icon: Mail,
     label: "البريد الإلكتروني",
@@ -19,12 +13,6 @@ const contactInfo = [
     label: "تابعنا",
     value: "alsalam_asg",
     dir: "ltr",
-  },
-  {
-    icon: MapPin,
-    label: "المقر الرئيسي",
-    value: "مكة المكرمة، المملكة العربية السعودية",
-    dir: "rtl",
   },
 ];
 
@@ -62,7 +50,7 @@ const ContactSection = () => {
   };
 
   return (
-    <section id="contact" ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-background">
+    <section id="contact" ref={sectionRef} className="py-12 sm:py-20 md:py-24 lg:py-28 bg-background">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className={`text-center mb-10 sm:mb-12 md:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
@@ -70,7 +58,7 @@ const ContactSection = () => {
             تواصل معنا
           </span>
           <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-tight">
-            <p className="mb-6">نسعد بتواصلكم</p>
+            <span className="block mb-3 sm:mb-6">نسعد بتواصلكم</span>
             <span className="text-primary">ونرحب باستفساراتكم</span>
           </h2>
         </div>

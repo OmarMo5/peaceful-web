@@ -27,9 +27,9 @@ const ProcessSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-background overflow-hidden">
+    <section ref={sectionRef} className="py-12 sm:py-20 md:py-24 lg:py-28 bg-background overflow-hidden">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
-        <div className={`text-center mb-12 sm:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className={`text-center mb-8 sm:mb-16 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
             منهجية العمل
           </span>
@@ -45,7 +45,7 @@ const ProcessSection = () => {
         </div>
 
         {/* Steps flow */}
-        <div className="relative flex flex-col md:flex-row items-stretch md:items-start gap-4 md:gap-0">
+        <div className="relative flex flex-wrap justify-center gap-y-6 md:flex-nowrap md:items-start">
           {/* Single connector line spanning from the first icon's center to the last icon's center,
               running behind the icons (icons have z-10 so the line sits in the background) */}
           <div
@@ -61,26 +61,26 @@ const ProcessSection = () => {
           />
 
           {steps.map((step, index) => (
-            <div key={step.en} className="relative flex md:flex-col items-center md:items-center flex-1 gap-4 md:gap-0">
+            <div key={step.en} className="relative flex flex-col items-center w-1/4 md:w-auto md:flex-1">
               <div
                 className={`flex flex-col items-center text-center transition-all duration-500 ease-out ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
                 }`}
                 style={{ transitionDelay: `${index * 90}ms` }}
               >
-                <div className="relative z-10 w-14 h-14 sm:w-16 sm:h-16 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg shrink-0">
-                  <step.icon className="w-6 h-6 sm:w-7 sm:h-7 text-primary-foreground" />
+                <div className="relative z-10 w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg shrink-0">
+                  <step.icon className="w-5 h-5 sm:w-7 sm:h-7 text-primary-foreground" />
                 </div>
-                <div className="mt-3 md:mt-4">
-                  <p className="font-bold text-foreground text-sm sm:text-base">{step.ar}</p>
-                  <p className="text-xs text-muted-foreground">{step.en}</p>
+                <div className="mt-2 md:mt-4">
+                  <p className="font-bold text-foreground text-xs sm:text-base">{step.ar}</p>
+                  <p className="text-[10px] sm:text-xs text-muted-foreground">{step.en}</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        <p className={`text-center text-muted-foreground mt-10 sm:mt-14 text-sm sm:text-base transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
+        <p className={`text-center text-muted-foreground mt-8 sm:mt-14 text-sm sm:text-base transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"}`}>
           من فكرة واعدة إلى مشروع متكامل يصنع أثراً مستداماً
         </p>
       </div>

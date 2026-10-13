@@ -56,15 +56,15 @@ const ValuesSection = () => {
   }, []);
 
   return (
-    <section id="values" ref={sectionRef} className="py-16 sm:py-20 md:py-24 lg:py-28 bg-section-light">
+    <section id="values" ref={sectionRef} className="py-12 sm:py-20 md:py-24 lg:py-28 bg-section-light">
       <div className="container mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
-        <div className={`text-center mb-12 sm:mb-14 md:mb-20 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
+        <div className={`text-center mb-8 sm:mb-14 md:mb-20 transition-all duration-700 ease-out ${isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-6"}`}>
           <span className="text-secondary font-semibold text-base sm:text-lg mb-4 sm:mb-5 block">
             قيمنا
           </span>
-          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-relaxed sm:leading-relaxed md:leading-tight mb-6 sm:mb-8">
-            <p className="mb-6"> المبادئ التي تقودنا</p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold text-foreground leading-snug sm:leading-relaxed md:leading-tight mb-4 sm:mb-8">
+            <span className="block mb-3 sm:mb-6">المبادئ التي تقودنا</span>
             <span className="text-primary">نحو التميز</span>
           </h2>
           <p className="text-muted-foreground text-base sm:text-lg max-w-xl sm:max-w-2xl mx-auto px-2 leading-relaxed">
@@ -73,33 +73,33 @@ const ValuesSection = () => {
         </div>
 
         {/* Values Grid - Responsive layout */}
-        <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-6 sm:gap-8">
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8">
           {values.map((value, index) => (
             <div
               key={index}
-              className={`text-center p-4 sm:p-6 transition-all duration-700 ease-out ${
+              className={`flex items-center gap-4 text-right sm:block sm:text-center rounded-2xl bg-card/70 border border-border/60 sm:bg-transparent sm:border-0 p-4 sm:p-6 transition-all duration-700 ease-out ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 120}ms` }}
             >
               {/* Icon Container */}
-              <div className="relative inline-block mb-6 sm:mb-8 group">
-                <div className="w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg transition-transform duration-300 group-hover:scale-105">
-                  <value.icon className="w-8 h-8 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary-foreground" />
+              <div className="relative inline-block shrink-0 mb-0 sm:mb-8 group">
+                <div className="w-12 h-12 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg transition-transform duration-300 group-hover:scale-105">
+                  <value.icon className="w-6 h-6 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary-foreground" />
                 </div>
                 {/* Decorative Ring */}
-                <div className="absolute inset-0 w-16 h-16 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl border-2 border-accent/50 transform rotate-6 transition-transform duration-300 group-hover:rotate-12" />
+                <div className="absolute inset-0 w-12 h-12 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl border-2 border-accent/50 transform rotate-6 transition-transform duration-300 group-hover:rotate-12" />
               </div>
 
               {/* Title */}
-              <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-3 sm:mb-4">
+              <div className="min-w-0"><h3 className="text-lg sm:text-2xl font-bold text-foreground mb-1 sm:mb-4">
                 {value.title}
               </h3>
 
               {/* Description */}
-              <p className="text-muted-foreground leading-relaxed max-w-xs sm:max-w-sm mx-auto text-sm sm:text-base">
+              <p className="text-muted-foreground leading-relaxed sm:max-w-sm sm:mx-auto text-[13px] sm:text-base">
                 {value.description}
-              </p>
+              </p></div>
             </div>
           ))}
         </div>
