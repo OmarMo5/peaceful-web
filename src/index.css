@@ -110,6 +110,11 @@
 
   html {
     scroll-behavior: smooth;
+    /* Reveal animations slide elements in from the side; never let them create a horizontal scrollbar. */
+    overflow-x: hidden;
+  }
+  @supports (overflow: clip) {
+    html { overflow-x: clip; }
   }
 
   body {

@@ -73,17 +73,17 @@ const ValuesSection = () => {
         </div>
 
         {/* Values Grid - Responsive layout */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-8">
+        <div className="flex overflow-x-auto snap-x snap-mandatory gap-3 -mx-4 px-4 pb-3 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden sm:mx-0 sm:px-0 sm:pb-0 sm:overflow-visible sm:grid sm:grid-cols-2 md:grid-cols-3 sm:gap-8">
           {values.map((value, index) => (
             <div
               key={index}
-              className={`flex items-center gap-4 text-right sm:block sm:text-center rounded-2xl bg-card/70 border border-border/60 sm:bg-transparent sm:border-0 p-4 sm:p-6 transition-all duration-700 ease-out ${
+              className={`shrink-0 w-[76%] snap-center flex flex-col items-center text-center sm:w-auto sm:block rounded-2xl bg-card border border-border/60 sm:bg-transparent sm:border-0 p-5 sm:p-6 transition-all duration-700 ease-out ${
                 isVisible ? "opacity-100 translate-y-0" : "opacity-0 translate-y-10"
               }`}
               style={{ transitionDelay: `${index * 120}ms` }}
             >
               {/* Icon Container */}
-              <div className="relative inline-block shrink-0 mb-0 sm:mb-8 group">
+              <div className="relative inline-block shrink-0 mb-4 sm:mb-8 group">
                 <div className="w-12 h-12 sm:w-18 sm:h-18 md:w-20 md:h-20 rounded-2xl bg-gradient-brand flex items-center justify-center shadow-brand-lg transition-transform duration-300 group-hover:scale-105">
                   <value.icon className="w-6 h-6 sm:w-9 sm:h-9 md:w-10 md:h-10 text-primary-foreground" />
                 </div>
@@ -92,7 +92,7 @@ const ValuesSection = () => {
               </div>
 
               {/* Title */}
-              <div className="min-w-0"><h3 className="text-lg sm:text-2xl font-bold text-foreground mb-1 sm:mb-4">
+              <div className="min-w-0"><h3 className="text-lg sm:text-2xl font-bold text-foreground mb-2 sm:mb-4">
                 {value.title}
               </h3>
 
